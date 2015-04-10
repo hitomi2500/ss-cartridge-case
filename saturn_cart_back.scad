@@ -58,13 +58,20 @@ module cartback_layout() {
 	translate([1,50,1])rotate([0,90,90])quarter_tube(1,0,23);
 	translate([8,cart_y,1])rotate([0,90,0])quarter_tube(1,0,cart_x/2-8);
     translate([8,cart_y-7,1])rotate([0,180,0])quarter_tore(7,1);
+    translate([18,cart_y-1.6,7.5]) cube ([8,1.5,1]);
 }
 
 module cartback_layout_holes() {
     translate([-1,-2,-1]) oblong (12,56,4,1);
 	translate([6.5,6.5,1])cylinder(r=1.5,h=7);
 	translate([6.5,6.5,1])cylinder(r=3.5,h=3);
-    translate([1,-0.6,8]) cube ([0.6,cart_y-10,0.6]);
+    translate([1,0,8]) cube ([1,cart_y-7,1]);
+    translate([8,cart_y-1,8]) cube ([10,1,1]);
+    translate([26,cart_y-1,8]) cube ([cart_x/2-26,1,1]);
+    translate([8,cart_y-7,8])rotate([0,0,90])quarter_tube(7,6,1);
+    translate([16,cart_y-1,6.5]) cube ([12,1,1]);
+    translate([16,cart_y-1,7]) cube ([2,1,1]);
+    translate([26,cart_y-1,7]) cube ([2,1,1]);
 }
 
 
@@ -84,5 +91,6 @@ union()
             translate([cart_x/2,cart_y/2,2])cylinder(r=1.5,h=6);
 		}
 	}
+
 }
 
