@@ -72,8 +72,12 @@ module cartback_layout_holes() {
     translate([16,cart_y-1,6.5]) cube ([12,1,1]);
     translate([16,cart_y-1,7]) cube ([2,1,1]);
     translate([26,cart_y-1,7]) cube ([2,1,1]);
+    translate([20,cart_y-10,-1]) cube ([cart_x/2-20,1,2]);
+    translate([28,cart_y-14,-1]) cube ([cart_x/2-28,1,2]);
+    translate([36,cart_y-18,-1]) cube ([cart_x/2-36,1,2]);
+    translate([42,cart_y-22,-1]) cube ([cart_x/2-42,1,2]);
+    translate([50,cart_y-26,-1]) cube ([cart_x/2-50,1,2]);
 }
-
 
 union()
 {
