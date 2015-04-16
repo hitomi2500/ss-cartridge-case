@@ -77,6 +77,18 @@ module cartback_layout_holes() {
     translate([8,cart_y-7,9])rotate([0,0,90])quarter_tube(9,7,1);
     translate([37/2,24,0])rotate([90,0,180])linear_extrude(height = cart_y-33)polygon(points=[[0,0],[0,1],[6,0]]);
  	translate([17,cart_y-1,9]) cube([10,2,1]);
+ 	translate([0,cart_y-14.5,-1]) cube([9,3,1.5]);
+ 	translate([-1,cart_y-14.5,0]) cube([1.5,3,6]);
+    translate([-0.5,cart_y-14.5,0.5])rotate([0,45,0])cube([1,3,1]);
+ 	translate([0,cart_y-20.5,-1]) cube([9,3,1.5]);
+ 	translate([-1,cart_y-20.5,0]) cube([1.5,3,6]);
+    translate([-0.5,cart_y-20.5,0.5])rotate([0,45,0])cube([1,3,1]);
+ 	translate([0,cart_y-26.5,-1]) cube([9,3,1.5]);
+ 	translate([-1,cart_y-26.5,0]) cube([1.5,3,6]);
+    translate([-0.5,cart_y-26.5,0.5])rotate([0,45,0])cube([1,3,1]);
+ 	translate([0,cart_y-32.5,-1]) cube([9,3,1.5]);
+ 	translate([-1,cart_y-32.5,0]) cube([1.5,3,6]);
+    translate([-0.5,cart_y-32.5,0.5])rotate([0,45,0])cube([1,3,1]);
 }
 
 union()
@@ -96,6 +108,7 @@ union()
 			cartback_layout_holes();
             translate([cart_x,0,0])mirror()cartback_layout_holes();
             translate([cart_x/2,cart_y/2,3])cylinder(r=1.5,h=6);
+            translate([cart_x/2-5.5,6,0])linear_extrude(height = 0.5)polygon(points=[[0,9.5],[11,9.5],[5.5,0]]);
 		}
 	}
 
