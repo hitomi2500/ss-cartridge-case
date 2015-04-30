@@ -1,7 +1,6 @@
-$fn=64;
+include <saturn_cart_configuration.scad>
 
 cart_x = 112;
-cart_y = 80;
 backlabel_x = 81;
 backlabel_y = 25.5;
 
@@ -37,7 +36,7 @@ module quarter_tore(r1, r2) {
 
 module cartback_layout() {
     translate([0,-1,2]) oblong (12,57,3,1);
-	translate([0,54,1]) cube ([1.6,19,7.5]);
+	translate([0,54,1]) cube ([1.6,cart_y-61,7.5]);
 	translate([0,0,5]) cube ([1.6,55,3.5]);
 	translate([8,cart_y-0.6,1]) cube ([cart_x/2-8,1.6,7.5]);
 	translate([1,25,5]) cube([6,1,2]);
@@ -89,7 +88,7 @@ union()
             translate([cart_x/2,cart_y/2,2])cylinder(r=2.5,h=5);
 		}
 		union(){
-			translate([(cart_x-backlabel_x)/2,7,-1]) oblong (backlabel_x,backlabel_y,2,2.5);
+			translate([(cart_x-backlabel_x)/2,cart_y/2-33,-1]) oblong (backlabel_x,backlabel_y,2,2.5);
 			cartback_layout_holes();
             translate([cart_x,0,0])mirror()cartback_layout_holes();
             translate([cart_x/2,cart_y/2,2])cylinder(r=1.5,h=6);
