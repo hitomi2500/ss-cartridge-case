@@ -1,8 +1,10 @@
 include <saturn_cart_configuration.scad>
+//PLEASE CHECK THAN CONFIGURATION IN saturn_cart_configuration.scad
+//FITS YOUR CART BEFORE PRINTING
 
-cart_x = 112;
-backlabel_x = 81;
-backlabel_y = 25.5;
+cart_x = 112; //this is not a parameter, added here just for reference
+backlabel_x = 81; // X size of a sticker cutout
+backlabel_y = 25.5; // Y size of a sticker cutout
 
 module oblong(x, y, z, r) {
 	minkowski()

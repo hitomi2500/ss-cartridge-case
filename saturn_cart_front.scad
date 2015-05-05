@@ -1,6 +1,8 @@
 include <saturn_cart_configuration.scad>
+//PLEASE CHECK THAN CONFIGURATION IN saturn_cart_configuration.scad
+//FITS YOUR CART BEFORE PRINTING
 
-cart_x = 112;
+cart_x = 112; //this is not a parameter, added here just for reference
 
 module oblong(x, y, z, r) {
 	minkowski()
@@ -28,7 +30,6 @@ module quarter_tore(r1, r2) {
             rotate_extrude()translate([r1,0,0])circle(r2);
             cube([r1+r2,r1+r2,r2]);
         }
-        //translate([0,0,-r2])cylinder(r=r1,h=r2*1);
     }
 }
 
