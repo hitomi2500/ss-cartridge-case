@@ -37,7 +37,11 @@ module quarter_tore(r1, r2) {
 }
 
 module cartback_layout() {
-    translate([0,-1,2]) oblong (12,57,3,1);
+    difference()
+    {
+        translate([0,-1,0]) oblong (12,57,5,1);
+        translate([0,0,0]) cube ([1,70,1]);
+    }
 	translate([0,54,1]) cube ([1.6,cart_y-61,7.5]);
 	translate([0,0,5]) cube ([1.6,55,3.5]);
 	translate([8,cart_y-0.6,1]) cube ([cart_x/2-8,1.6,7.5]);
@@ -56,16 +60,27 @@ module cartback_layout() {
 	translate([1,0,4.5])rotate([0,0,180])quarter_tube(1,0,4);
 	translate([11,0,4.5])rotate([0,0,270])quarter_tube(1,0,4);
 	translate([8,cart_y-7,1])rotate([0,0,90])quarter_tube(8,6.4,7.5);
-	translate([1,50,1])rotate([0,90,90])quarter_tube(1,0,23);
+	translate([1,0,1])rotate([0,90,90])quarter_tube(1,0,73);
 	translate([8,cart_y,1])rotate([0,90,0])quarter_tube(1,0,cart_x/2-8);
     translate([8,cart_y-7,1])rotate([0,180,0])quarter_tore(7,1);
     translate([18,cart_y-1.6,7.5]) cube ([8,1.5,1]);
 }
 
 module cartback_layout_holes() {
-    translate([-1,-2,-1]) oblong (12,56,4,1);
-	translate([6.5,6.5,1])cylinder(r=1.5,h=7);
-	translate([6.5,6.5,1])cylinder(r=3.5,h=3);
+    if (remove_unprintable_concaves < 1)
+    {
+        translate([-1,-2,-1]) oblong (12,56,4,1);	
+    }
+    if (remove_unprintable_concaves < 2)
+    {
+        translate([20,cart_y-10,-1]) cube ([cart_x/2-20,1,2]);
+        translate([28,cart_y-14,-1]) cube ([cart_x/2-28,1,2]);
+        translate([36,cart_y-18,-1]) cube ([cart_x/2-36,1,2]);
+        translate([42,cart_y-22,-1]) cube ([cart_x/2-42,1,2]);
+        translate([50,cart_y-26,-1]) cube ([cart_x/2-50,1,2]);
+        translate([6.5,6.5,-9])cylinder(r=3.5,h=13);
+    }    
+    translate([6.5,6.5,-8])cylinder(r=1.5,h=17);
     translate([1,0,8]) cube ([1,cart_y-7,1]);
     translate([8,cart_y-1,8]) cube ([10,1,1]);
     translate([26,cart_y-1,8]) cube ([cart_x/2-26,1,1]);
@@ -73,11 +88,6 @@ module cartback_layout_holes() {
     translate([16,cart_y-1,6.5]) cube ([12,1,1]);
     translate([16,cart_y-1,7]) cube ([2,1,1]);
     translate([26,cart_y-1,7]) cube ([2,1,1]);
-    translate([20,cart_y-10,-1]) cube ([cart_x/2-20,1,2]);
-    translate([28,cart_y-14,-1]) cube ([cart_x/2-28,1,2]);
-    translate([36,cart_y-18,-1]) cube ([cart_x/2-36,1,2]);
-    translate([42,cart_y-22,-1]) cube ([cart_x/2-42,1,2]);
-    translate([50,cart_y-26,-1]) cube ([cart_x/2-50,1,2]);
 }
 
 union()
@@ -90,7 +100,10 @@ union()
             translate([cart_x/2,cart_y/2,2])cylinder(r=2.5,h=5);
 		}
 		union(){
-			translate([(cart_x-backlabel_x)/2,cart_y/2-33,-1]) oblong (backlabel_x,backlabel_y,2,2.5);
+			if (remove_unprintable_concaves < 1)
+            {
+                translate([(cart_x-backlabel_x)/2,cart_y/2-33,-1]) oblong (backlabel_x,backlabel_y,2,2.5);
+            }
 			cartback_layout_holes();
             translate([cart_x,0,0])mirror()cartback_layout_holes();
             translate([cart_x/2,cart_y/2,2])cylinder(r=1.5,h=6);
