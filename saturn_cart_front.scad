@@ -35,10 +35,13 @@ module quarter_tore(r1, r2) {
 module cartback_layout() {
     translate([0,0,1]) cube ([1.6,cart_y-7,8.5]);
 	translate([8,cart_y-0.6,1]) cube ([cart_x/2-8,1.6,8.5]);
-	translate([2,25,2]) cube([4.5,1,6.5]);
-	translate([2,38,2]) cube([4.5,1,6.5]);
-	translate([2,52,2]) cube([4.5,1,6.5]);
-	translate([5.5,41.5,2]) cube([1,7.5,9.5]);
+	translate([2,25,2]) cube([5.5,1,5.5]);
+	translate([2,38,2]) cube([5.5,1,5.5]);
+	translate([2,52,2]) cube([5.5,1,5.5]);
+    if (cart_usbcart)
+        translate([6.5,41.5,2]) cube([1.5,7.5,9.5]);
+    else
+        translate([5.5,41.5,2]) cube([1,7.5,9.5]);
 	translate([2,41.5,2]) cube([4.5,1,6.5]);
 	translate([2,48,2]) cube([4.5,1,6.5]);
 	translate([4,41.5,2]) cube([2.5,1,9.5]);
@@ -50,7 +53,7 @@ module cartback_layout() {
 	translate([1,-1,1]) cube([10,1,8]);
 	translate([4.5,0,1]) cube([4,0.5,8.5]);
 	translate([6.5,6.5,2])cylinder(r=2.5,h=9);
-	translate([1,67,2]) cube([6,1,5]);
+	translate([1,67,2]) cube([6,1,5.5]);
 	translate([13,cart_y-6,2]) cube([1,6,5]);
 	translate([16,cart_y-1,2]) cube([12,1,9.5]);
 	translate([17,cart_y-2,2]) cube([1.5,1,9]);
@@ -104,7 +107,8 @@ union()
             translate([37/2,24,1.5]) cube ([cart_x-37,cart_y-30,1.5]);
             cartback_layout();
 			translate([cart_x,0,0])mirror()cartback_layout();
-            translate([cart_x/2,cart_y/2,3])cylinder(r=2.5,h=5.5);
+            if (front_central_pillar)
+                translate([cart_x/2,cart_y/2,3])cylinder(r=2.5,h=5.5);
             translate([51.5,11.5,2]) cube([4.5,1,6.5]);
 		}
 		union(){

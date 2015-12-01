@@ -97,7 +97,8 @@ union()
 			translate([1,0,0]) oblong (cart_x-2,cart_y,2,7);
             cartback_layout();
 			translate([cart_x,0,0])mirror()cartback_layout();
-            translate([cart_x/2,cart_y/2,2])cylinder(r=2.5,h=5);
+            if (back_central_pillar)
+                translate([cart_x/2,cart_y/2,2])cylinder(r=2.5,h=5);
 		}
 		union(){
 			if (remove_unprintable_concaves < 1)
@@ -107,6 +108,8 @@ union()
 			cartback_layout_holes();
             translate([cart_x,0,0])mirror()cartback_layout_holes();
             translate([cart_x/2,cart_y/2,2])cylinder(r=1.5,h=6);
+            if (cart_usbcart)
+                translate([-5,56.5,6.5]) cube([20,12,10]); //usb hole
 		}
 	}
 
