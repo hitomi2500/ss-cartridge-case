@@ -124,7 +124,7 @@ union()
             translate([cart_x,0,0])mirror()cartback_layout_holes();
             translate([cart_x/2,cart_y/2,3])cylinder(r=1.5,h=6);
             if (cart_usbcart)
-                translate([cart_x-9,56.5,3]) cube([10,12,10]); //usb hole
+                translate([cart_x-9,56.5,2]) cube([10,12,10]); //usb hole
 		}
 	}
 
