@@ -32,7 +32,6 @@ module quarter_tore(r1, r2) {
             rotate_extrude()translate([r1,0,0])circle(r2);
             cube([r1+r2,r1+r2,r2]);
         }
-        //translate([0,0,-r2])cylinder(r=r1,h=r2*1);
     }
 }
 
@@ -63,7 +62,7 @@ module cartback_layout() {
 	translate([1,0,1])rotate([0,90,90])quarter_tube(1,0,73);
 	translate([8,cart_y,1])rotate([0,90,0])quarter_tube(1,0,cart_x/2-8);
     translate([8,cart_y-7,1])rotate([0,180,0])quarter_tore(7,1);
-    translate([18,cart_y-1.6,7.5]) cube ([8,1.5,1]);
+    translate([19.2,cart_y-3.6,6.7]) cube ([5.6,3.5,1.8]);
 }
 
 module cartback_layout_holes() {
@@ -82,12 +81,9 @@ module cartback_layout_holes() {
     }    
     translate([6.5,6.5,-8])cylinder(r=1.5,h=17);
     translate([1,0,8]) cube ([1,cart_y-7,1]);
-    translate([8,cart_y-1,8]) cube ([10,1,1]);
-    translate([26,cart_y-1,8]) cube ([cart_x/2-26,1,1]);
+    translate([8,cart_y-1,8]) cube ([11.2,1,1]);
+    translate([24.8,cart_y-1,8]) cube ([cart_x/2-24.8,1,1]);
     translate([8,cart_y-7,8])rotate([0,0,90])quarter_tube(7,6,1);
-    translate([16,cart_y-1,6.5]) cube ([12,1,1]);
-    translate([16,cart_y-1,7]) cube ([2,1,1]);
-    translate([26,cart_y-1,7]) cube ([2,1,1]);
 }
 
 union()
