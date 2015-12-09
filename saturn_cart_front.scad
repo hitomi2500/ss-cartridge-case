@@ -38,7 +38,7 @@ module cartback_layout() {
 	translate([2,25,2]) cube([5.5,1,5.5]);
 	translate([2,38,2]) cube([5.5,1,5.5]);
 	translate([2,52,2]) cube([5.5,1,5.5]);
-    if (cart_usbcart)
+    if (cart_type == "Saturn USB Cart Rev 3")
         translate([6.5,41.5,2]) cube([1.5,7.5,9.5]);
     else
         translate([5.5,41.5,2]) cube([1,7.5,9.5]);
@@ -120,7 +120,7 @@ union()
             cartback_layout_holes();
             translate([cart_x,0,0])mirror()cartback_layout_holes();
             translate([cart_x/2,cart_y/2,3])cylinder(r=1.5,h=6);
-            if (cart_usbcart)
+            if (cart_type == "Saturn USB Cart Rev 3")
                 translate([cart_x-9,56.5,2]) cube([10,12,10]); //usb hole
 		}
 	}
