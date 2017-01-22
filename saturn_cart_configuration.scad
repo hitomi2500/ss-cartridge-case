@@ -37,6 +37,23 @@ cart_type = "Saturn USB Cart Rev 3"; //ALPHA SUPPORT //USB dev cart Rev 3 by ant
 // 2 to remove all concaves (flat surface)
 remove_unprintable_concaves = 1;
 
+//Locks are unprintable without support, and could fail
+//to actually lock without mechanical adaptation
+//0 - locks are disabled, 1 - locks are enabled
+//GUIDES AND LOCKS DON'T WORK TOGETHER, DON'T ENABLE BOTH
+use_locks = 0;
+
+//Guides are easy-printable. they let top and bottom parts connect
+//without any shift, and even can hold'em together a bit if
+//printed precisely enough.
+//GUIDES AND LOCKS DON'T WORK TOGETHER, DON'T ENABLE BOTH
+use_guides = 1;
+//to facilitate your printer inaccuracy, you can set additional
+//gap between the guides (in mm). Increase this if your slides are
+//too tight, and decrease if they're loose. Negative values
+//are possible.
+guides_gap = 0.0;
+
 //Central pillars can intersect with some parts.
 //By default, they're enabled. Set to 0 remove them.
 front_central_pillar = 1;

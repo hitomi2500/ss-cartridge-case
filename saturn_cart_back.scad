@@ -62,7 +62,18 @@ module cartback_layout() {
 	translate([1,0,1])rotate([0,90,90])quarter_tube(1,0,73);
 	translate([8,cart_y,1])rotate([0,90,0])quarter_tube(1,0,cart_x/2-8);
     translate([8,cart_y-7,1])rotate([0,180,0])quarter_tore(7,1);
-    translate([19.2,cart_y-3.6,6.7]) cube ([5.6,3.5,1.8]);
+    if (use_locks > 0)
+    {
+        translate([19.2,cart_y-3.6,6.7]) cube ([5.6,3.5,1.8]);
+    }
+    //guides to connect top and bottom
+    if (use_guides > 0)
+    {
+        translate([cart_x/2-14-guides_gap,cart_y-2.5,2]) cube([7,2,6]);
+        translate([cart_x/2-14-guides_gap,cart_y-2.5,8]) cube([7,1.5,5.5]);
+        translate([1.5,42.5+guides_gap,5]) cube([2,5.5-guides_gap*2,3]);
+	    translate([2,42.5+guides_gap,5]) cube([2,5.5-guides_gap*2,8]);
+	}
 }
 
 module cartback_layout_holes() {
@@ -84,6 +95,10 @@ module cartback_layout_holes() {
     translate([8,cart_y-1,8]) cube ([11.2,1,1]);
     translate([24.8,cart_y-1,8]) cube ([cart_x/2-24.8,1,1]);
     translate([8,cart_y-7,8])rotate([0,0,90])quarter_tube(7,6,1);
+    if (use_locks < 1)
+    {
+        translate([8,cart_y-1,8]) cube ([19,1,1]);
+    }
 }
 
 union()

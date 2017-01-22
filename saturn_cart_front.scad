@@ -42,7 +42,7 @@ module cartback_layout() {
         translate([6.5,41.5,2]) cube([1.5,7.5,9.5]);
     else
         translate([5.5,41.5,2]) cube([1,7.5,9.5]);
-	translate([2,41.5,2]) cube([4.5,1,6.5]);
+    translate([2,41.5,2]) cube([4.5,1,6.5]);
 	translate([2,48,2]) cube([4.5,1,6.5]);
 	translate([4,41.5,2]) cube([2.5,1,9.5]);
 	translate([4,48,2]) cube([2.5,1,9.5]);
@@ -55,8 +55,11 @@ module cartback_layout() {
 	translate([6.5,6.5,2])cylinder(r=2.5,h=9);
 	translate([1,67,2]) cube([6,1,5.5]);
 	translate([13,cart_y-6,2]) cube([1,6,5]);
-	translate([16,cart_y-2.5,2]) cube([12,2,11.5]);
-	translate([1,0,1])rotate([0,0,180])quarter_tube(1,0,8);
+    if (use_locks > 0)
+    {
+        translate([16,cart_y-2.5,2]) cube([12,2,11.5]);
+	}
+    translate([1,0,1])rotate([0,0,180])quarter_tube(1,0,8);
 	translate([11,0,1])rotate([0,0,270])quarter_tube(1,0,8);
 	translate([8,cart_y-7,1])rotate([0,0,90])quarter_tube(8,6.4,8.5);
 	translate([1,0,1])rotate([0,90,90])quarter_tube(1,0,73);
@@ -67,6 +70,11 @@ module cartback_layout() {
     translate([1,0,0])cube([10,10,2]);
     translate([1,0,1])sphere(r=1);
     translate([11,0,1])sphere(r=1);
+    //guides to connect top and bottom
+    if (use_guides > 0)
+    {
+        translate([cart_x/2,cart_y-2.5,2]) cube([5,2,11.5]);
+	}
 }
 
 module cartback_layout_holes() {
@@ -74,7 +82,10 @@ module cartback_layout_holes() {
 	translate([-1,-1,9]) cube ([2,cart_y-6,2]);
     translate([8,cart_y,9]) cube ([cart_x/2-8,1,1]);
     translate([8,cart_y-7,9])rotate([0,0,90])quarter_tube(9,7,1);
-    translate([19,cart_y-3,9]) cube([6,4,2]);
+    if (use_locks > 0)
+    {
+        translate([19,cart_y-3,9]) cube([6,4,2]);
+    }
     if (remove_unprintable_concaves < 1)
     {
         translate([37/2,24,0])rotate([90,0,180])linear_extrude(height = cart_y-33)polygon(points=[[0,0],[0,1],[6,0]]);
