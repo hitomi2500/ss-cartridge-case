@@ -28,7 +28,8 @@ cart_y = 80; //cartridge height
 //cart_type = "SD card reader & USB Rev 1c"; //NOT YET SUPPORTED //SD card reader with USB dev Rev 1c by cafe-alpha and antime
 //cart_type = "USB Dev Cart Rev 2e"; //NOT YET SUPPORTED //SD card reader with USB dev Rev 2e by cafe-alpha and antime
 //cart_type = "USB Dev Cart Rev 2f"; //NOT YET SUPPORTED //SD card reader with USB dev Rev 2f by cafe-alpha and antime
-cart_type = "wasca v1.1"; //NOT YET SUPPORTED //wasca cart v1.1 by hitomi2500
+//cart_type = "wasca v1.1"; //ALPHA SUPPORT  //wasca cart v1.1 by hitomi2500
+cart_type = "wasca v1.4"; //ALPHA SUPPORT  //wasca cart v1.4 by cafe-alpha and hitomi2500
 
 //If you are 3d-printing with filament extrusion and
 //without support material, some concaves will become

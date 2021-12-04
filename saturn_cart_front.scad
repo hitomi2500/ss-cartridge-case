@@ -142,9 +142,21 @@ union()
             translate([cart_x/2-7,cart_y/2,3])cylinder(r=1.5,h=6);
             if (cart_type == "Saturn USB Cart Rev 3")
                 translate([cart_x-9,56.5,2]) cube([10,12,10]); //usb hole
-            translate([20,45,-5]) cube ([50,100,50]);
-            translate([-10,62,2]) cube ([20,10,50]);
-		}
+            if (cart_type == "wasca v1.1")
+            {
+                translate([20,45,-5]) cube ([50,100,50]); //connectors cutout
+                translate([-10,62,2]) cube ([20,10,50]);  //usb hole     
+            }
+            if (cart_type == "wasca v1.4")
+            {
+                translate([20,65,-5]) cube ([30,100,50]); //sd cutout
+                translate([60,68,-5]) cube ([20,10,50]); //debug cutout
+                translate([105,48,-5]) cube ([10,50,50]); //esp32 cutout
+                translate([10,75,-5]) cylinder(r=2,h=10); //led cutout
+                translate([15,30,-5]) cube ([5,10,50]); //dfu cutout
+                translate([-10,62,2]) cube ([20,10,50]);  //usb hole     
+            }
+        }
 	}
 
 }
