@@ -69,11 +69,20 @@ module cartback_layout() {
     //guides to connect top and bottom
     if (use_guides > 0)
     {
-        translate([cart_x/2-14-guides_gap,cart_y-2.5,2]) cube([7,2,6]);
-        translate([cart_x/2-14-guides_gap,cart_y-2.5,8]) cube([7,1.5,5.5]);
-        translate([1.5,42.5+guides_gap,5]) cube([2,5.5-guides_gap*2,3]);
-	    translate([2,42.5+guides_gap,5]) cube([2,5.5-guides_gap*2,8]);
-	}
+        if (cart_type == "wasca v1.1")
+        {
+        }
+        else
+        {
+            translate([cart_x/2-14-guides_gap,cart_y-2.5,2]) cube([7,2,6]);
+            translate([cart_x/2-14-guides_gap,cart_y-2.5,8]) cube([7,1.5,5.5]);
+        }
+        translate([-0.5,1.5,0])union()
+        {
+            translate([1.5,42.5+guides_gap,5]) cube([2,5.5-guides_gap*2,3]);
+            translate([2,42.5+guides_gap,5]) cube([2,5.5-guides_gap*2,8]);
+        }
+    }
 }
 
 module cartback_layout_holes() {
@@ -99,6 +108,10 @@ module cartback_layout_holes() {
     {
         translate([8,cart_y-1,8]) cube ([19,1,1]);
     }
+    if (cart_type == "wasca v1.1")
+    {
+        translate([-1,-2,-1]) oblong (12,56,4,1);
+    }
 }
 
 union()
@@ -121,6 +134,12 @@ union()
             translate([cart_x/2,cart_y/2,2])cylinder(r=1.5,h=6);
             if (cart_type == "Saturn USB Cart Rev 3")
                 translate([-5,56.5,6.5]) cube([20,12,10]); //usb hole
+            if (cart_type == "wasca v1.1")
+            {
+                translate([cart_x/2+3,cart_y+5,8])rotate([90,0,0])cylinder(r=3,h=15);//led cutout
+                translate([64,77,2]) cube([29,5,10]);//sd card cutout
+
+            }
 		}
 	}
 

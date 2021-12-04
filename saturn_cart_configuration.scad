@@ -23,19 +23,19 @@ cart_y = 80; //cartridge height
 //cart_type = "Action Replay Plus"; //NOT YET SUPPORTED //AR Plus by EMS, with comm link connector
 //cart_type = "Action Replay Plus Linkless"; //NOT YET SUPPORTED //AR Plus by EMS, without comm link
 //cart_type = "Saturn USB Cart Rev 2"; //NOT YET SUPPORTED //USB dev cart Rev 2 by antime
-cart_type = "Saturn USB Cart Rev 3"; //ALPHA SUPPORT //USB dev cart Rev 3 by antime
+//cart_type = "Saturn USB Cart Rev 3"; //ALPHA SUPPORT //USB dev cart Rev 3 by antime
 //cart_type = "SD card reader & USB Rev 1b"; //NOT YET SUPPORTED //SD card reader with USB dev Rev 1b by cafe-alpha and antime
 //cart_type = "SD card reader & USB Rev 1c"; //NOT YET SUPPORTED //SD card reader with USB dev Rev 1c by cafe-alpha and antime
 //cart_type = "USB Dev Cart Rev 2e"; //NOT YET SUPPORTED //SD card reader with USB dev Rev 2e by cafe-alpha and antime
 //cart_type = "USB Dev Cart Rev 2f"; //NOT YET SUPPORTED //SD card reader with USB dev Rev 2f by cafe-alpha and antime
-//cart_type = "wasca v1.1"; //NOT YET SUPPORTED //wasca cart v1.1 by hitomi2500
+cart_type = "wasca v1.1"; //NOT YET SUPPORTED //wasca cart v1.1 by hitomi2500
 
 //If you are 3d-printing with filament extrusion and
 //without support material, some concaves will become
 //unprintable. You can remove them here.
 //Choose 0 for no action, 1 to remove big concaves,
 // 2 to remove all concaves (flat surface)
-remove_unprintable_concaves = 1;
+remove_unprintable_concaves = 2;
 
 //Locks are unprintable without support, and could fail
 //to actually lock without mechanical adaptation

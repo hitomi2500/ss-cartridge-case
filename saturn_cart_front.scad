@@ -38,14 +38,17 @@ module cartback_layout() {
 	translate([2,25,2]) cube([5.5,1,5.5]);
 	translate([2,38,2]) cube([5.5,1,5.5]);
 	translate([2,52,2]) cube([5.5,1,5.5]);
-    if (cart_type == "Saturn USB Cart Rev 3")
-        translate([6.5,41.5,2]) cube([1.5,7.5,9.5]);
-    else
-        translate([5.5,41.5,2]) cube([1,7.5,9.5]);
-    translate([2,41.5,2]) cube([4.5,1,6.5]);
-	translate([2,48,2]) cube([4.5,1,6.5]);
-	translate([4,41.5,2]) cube([2.5,1,9.5]);
-	translate([4,48,2]) cube([2.5,1,9.5]);
+    translate([-0.5,1.5,0])union()
+    {
+        if (cart_type == "Saturn USB Cart Rev 3")
+            translate([6.5,41.5,2]) cube([1.5,7.5,9.5]);
+        else
+            translate([5.5,41.5,2]) cube([1,7.5,9.5]);        
+        translate([2,41.5,2]) cube([4.5,1,6.5]);
+        translate([2,48,2]) cube([4.5,1,6.5]);
+        translate([4,41.5,2]) cube([2.5,1,9.5]);
+        translate([4,48,2]) cube([2.5,1,9.5]);
+    }
 	translate([2,12,2]) cube([6.5,1,6.5]);
 	translate([13.5,11.5,2]) cube([cart_x/2-13.5,1,5.5]);
 	translate([13.5,11.5,2]) cube([4.5,1,6.5]);
@@ -79,7 +82,7 @@ module cartback_layout() {
 
 module cartback_layout_holes() {
     translate([6.5,6.5,1])cylinder(r=1,h=15);
-	translate([-1,-1,9]) cube ([2,cart_y-6,2]);
+    translate([-1,-1,9]) cube ([2,cart_y-6,2]);
     translate([8,cart_y,9]) cube ([cart_x/2-8,1,1]);
     translate([8,cart_y-7,9])rotate([0,0,90])quarter_tube(9,7,1);
     if (use_locks > 0)
@@ -105,6 +108,12 @@ module cartback_layout_holes() {
         translate([-1,cart_y-32.5,0]) cube([1.5,3,6]);
         translate([-0.5,cart_y-32.5,0.5])rotate([0,45,0])cube([1,3,1]);
     }
+    //antiedge
+    translate([4,-10,4])rotate([0,90,90])difference()
+    {
+        cube([4,4,100]);
+        quarter_tube(4,0,100);
+    }
 }
 
 union()
@@ -116,7 +125,7 @@ union()
             cartback_layout();
 			translate([cart_x,0,0])mirror()cartback_layout();
             if (front_central_pillar)
-                translate([cart_x/2,cart_y/2,3])cylinder(r=2.5,h=5.5);
+                translate([cart_x/2-7,cart_y/2,3])cylinder(r=2.5,h=5.5);
             translate([51.5,11.5,2]) cube([4.5,1,6.5]);
 		}
 		union(){
@@ -130,9 +139,11 @@ union()
             }
             cartback_layout_holes();
             translate([cart_x,0,0])mirror()cartback_layout_holes();
-            translate([cart_x/2,cart_y/2,3])cylinder(r=1.5,h=6);
+            translate([cart_x/2-7,cart_y/2,3])cylinder(r=1.5,h=6);
             if (cart_type == "Saturn USB Cart Rev 3")
                 translate([cart_x-9,56.5,2]) cube([10,12,10]); //usb hole
+            translate([20,45,-5]) cube ([50,100,50]);
+            translate([-10,62,2]) cube ([20,10,50]);
 		}
 	}
 
