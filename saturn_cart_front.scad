@@ -76,7 +76,7 @@ module cartback_layout() {
     //guides to connect top and bottom
     if (use_guides > 0)
     {
-        translate([cart_x/2,cart_y-2.5,2]) cube([5,2,11.5]);
+        translate([16,cart_y-2.5,2]) cube([12,2,11.5]);
 	}
 }
 
@@ -150,11 +150,14 @@ union()
             if (cart_type == "wasca v1.4")
             {
                 translate([20,65,-5]) cube ([30,100,50]); //sd cutout
-                translate([60,68,-5]) cube ([20,10,50]); //debug cutout
-                translate([105,48,-5]) cube ([10,50,50]); //esp32 cutout
+                translate([60,71,-5]) cube ([20,10,50]); //debug cutout
+                translate([105,51,-5]) cube ([10,50,50]); //esp32 cutout
                 translate([10,75,-5]) cylinder(r=2,h=10); //led cutout
-                translate([15,30,-5]) cube ([5,10,50]); //dfu cutout
-                translate([-10,62,2]) cube ([20,10,50]);  //usb hole     
+                translate([20,30,-5]) cube ([5,10,50]); //dfu cutout
+                translate([6,51,-5]) cube ([7,7,50]); //stm32 debug cutout
+                translate([-10,62,2]) cube ([20,10,50]);  //usb hole 
+                translate([cart_x/2-28.5,70.5,7]) cube ([57,10,1.5]);  //pcb hole      
+                translate([cart_x/2-50,70.5,7]) cube ([9,10,1.5]);  //pcb hole      
             }
         }
 	}

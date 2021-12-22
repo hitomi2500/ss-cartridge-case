@@ -1,6 +1,6 @@
 $fn=64;
 
-cart_y = 80; //cartridge height
+cart_y = 81.5; //cartridge height
 
 //cartridge types here, comment all but your type
 //please be aware about the comment after the type definition
@@ -49,6 +49,7 @@ use_locks = 0;
 //printed precisely enough.
 //GUIDES AND LOCKS DON'T WORK TOGETHER, DON'T ENABLE BOTH
 use_guides = 1;
+
 //to facilitate your printer inaccuracy, you can set additional
 //gap between the guides (in mm). Increase this if your slides are
 //too tight, and decrease if they're loose. Negative values
