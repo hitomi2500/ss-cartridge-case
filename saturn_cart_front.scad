@@ -151,7 +151,7 @@ union()
             {
                 translate([20,65,-5]) cube ([30,100,50]); //sd cutout
                 translate([57,71,-5]) cube ([20,10,50]); //debug cutout
-                translate([105,51,-5]) cube ([10,50,50]); //esp32 cutout
+                translate([104,51,-5]) cube ([10,50,50]); //esp32 cutout
                 translate([10,77,-5]) cylinder(r=2,h=10); //led cutout
                 translate([81,77,-5]) cylinder(r=2,h=10); //led2 cutout
                 translate([19,30,-5]) cube ([5,10,50]); //dfu cutout
