@@ -1,6 +1,6 @@
 $fn=64;
 
-cart_y = 81.5; //cartridge height
+cart_y = 80; //cartridge height
 
 //cartridge types here, comment all but your type
 //please be aware about the comment after the type definition
