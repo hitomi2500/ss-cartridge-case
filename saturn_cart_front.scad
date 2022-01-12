@@ -55,7 +55,7 @@ module cartback_layout() {
 	translate([11,0,2]) cube([1,2.5,7]);
 	translate([1,-1,1]) cube([10,1,8]);
 	translate([4.5,0,1]) cube([4,0.5,8.5]);
-	translate([6.5,6.5,2])cylinder(r=2.5,h=9);
+	translate([6.5,6.5,2])cylinder(r=2.5,h=8);
 	translate([1,67,2]) cube([6,1,5.5]);
 	translate([13,cart_y-6,2]) cube([1,6,5]);
     if (use_locks > 0)
@@ -154,7 +154,7 @@ union()
                 translate([104,51,-5]) cube ([10,50,50]); //esp32 cutout
                 translate([10,77,-5]) cylinder(r=2,h=10); //led cutout
                 translate([81,77,-5]) cylinder(r=2,h=10); //led2 cutout
-                translate([19,30,-5]) cube ([5,10,50]); //dfu cutout
+                translate([19,27,-5]) cube ([5,13,50]); //dfu cutout
                 translate([6,53,-5]) cube ([7,7,50]); //stm32 debug cutout
                 translate([-10,62,2]) cube ([20,10,50]);  //usb hole 
                 translate([cart_x/2-28.5,70.5,7]) cube ([57,10,1.5]);  //pcb hole      

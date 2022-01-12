@@ -72,6 +72,9 @@ module cartback_layout() {
         if (cart_type == "wasca v1.1")
         {
         }
+        else if (cart_type == "wasca v1.4")
+        {
+        }
         else
         {
             translate([cart_x/2-14-guides_gap,cart_y-2.5,2]) cube([7,2,6]);
@@ -80,7 +83,7 @@ module cartback_layout() {
         translate([-0.5,1.5,0])union()
         {
             translate([1.5,42.5+guides_gap,5]) cube([2,5.5-guides_gap*2,3]);
-            translate([2,42.5+guides_gap,5]) cube([2,5.5-guides_gap*2,8]);
+            translate([2,42.5+guides_gap,5]) cube([1.6,5.5-guides_gap*2,8]);
         }
     }
 }
@@ -111,6 +114,11 @@ module cartback_layout_holes() {
     if (cart_type == "wasca v1.1")
     {
         translate([-1,-2,-1]) oblong (12,56,4,1);
+    }
+    if (cart_type == "wasca v1.4")
+    {
+        translate([-10,62,5]) cube ([20,10,50]);  //usb hole 
+        translate([cart_x/2-1,cart_y/2-5,2]) cube ([10,10,10]);  //remove pillar                  
     }
 }
 
