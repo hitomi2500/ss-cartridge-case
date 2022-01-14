@@ -41,13 +41,13 @@ module cartback_layout() {
     translate([-0.5,1.5,0])union()
     {
         if (cart_type == "Saturn USB Cart Rev 3")
-            translate([6.5,41.5,2]) cube([1.5,7.5,9.5]);
+            translate([6.5,40,2]) cube([1.5,7.5,9.5]);
         else
-            translate([5.5,41.5,2]) cube([1,7.5,9.5]);        
-        translate([2,41.5,2]) cube([4.5,1,6.5]);
-        translate([2,48,2]) cube([4.5,1,6.5]);
-        translate([4,41.5,2]) cube([2.5,1,9.5]);
-        translate([4,48,2]) cube([2.5,1,9.5]);
+            translate([5.5,40,2]) cube([1,7.5,9.5]);        
+        translate([2,40,2]) cube([4.5,1,6.5]);
+        translate([2,46.5,2]) cube([4.5,1,6.5]);
+        translate([4,40,2]) cube([2.5,1,9.5]);
+        translate([4,46.5,2]) cube([2.5,1,9.5]);
     }
 	translate([2,12,2]) cube([6.5,1,6.5]);
 	translate([13.5,11.5,2]) cube([cart_x/2-13.5,1,5.5]);
@@ -150,16 +150,16 @@ union()
             if (cart_type == "wasca v1.4")
             {
                 translate([20,65,-5]) cube ([30,100,50]); //sd cutout
-                translate([57,71,-5]) cube ([20,10,50]); //debug cutout
-                translate([104,51,-5]) cube ([10,50,50]); //esp32 cutout
-                translate([10,77,-5]) cylinder(r=2,h=10); //led cutout
-                translate([81,77,-5]) cylinder(r=2,h=10); //led2 cutout
+                translate([57,69.5,-5]) cube ([20,10,50]); //debug cutout
+                translate([103,50,-5]) cube ([10,50,50]); //esp32 cutout
+                translate([10,75.5,-5]) cylinder(r=2,h=10); //led cutout
+                translate([81,75.5,-5]) cylinder(r=2,h=10); //led2 cutout
                 translate([19,27,-5]) cube ([5,13,50]); //dfu cutout
-                translate([6,53,-5]) cube ([7,7,50]); //stm32 debug cutout
-                translate([-10,62,2]) cube ([20,10,50]);  //usb hole 
-                translate([cart_x/2-28.5,70.5,7]) cube ([57,10,1.5]);  //pcb hole      
-                translate([cart_x/2-50,70.5,7]) cube ([9,10,1.5]);  //pcb hole  
-                translate([cart_x/2-55,70.5,3]) cube ([9,10,10]);  //pcb hole2  
+                translate([7,51.5,-5]) cube ([7,7,50]); //stm32 debug cutout
+                translate([-10,60.5,2]) cube ([20,10,50]);  //usb hole 
+                //translate([cart_x/2-28.5,70.5,7]) cube ([57,10,1.5]);  //pcb hole      
+                //translate([cart_x/2-50,70.5,7]) cube ([9,10,1.5]);  //pcb hole  
+                //translate([cart_x/2-55,70.5,3]) cube ([9,10,10]);  //pcb hole2  
                 translate([cart_x/2-12,cart_y/2-5,3]) cube ([10,10,10]);  //remove pillar                  
             }
         }
