@@ -36,7 +36,7 @@ cart_type = "wasca v1.4"; //ALPHA SUPPORT  //wasca cart v1.4 by cafe-alpha and h
 //unprintable. You can remove them here.
 //Choose 0 for no action, 1 to remove big concaves,
 // 2 to remove all concaves (flat surface)
-remove_unprintable_concaves = 2;
+remove_unprintable_concaves = 0;
 
 //Locks are unprintable without support, and could fail
 //to actually lock without mechanical adaptation

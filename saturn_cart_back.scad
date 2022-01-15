@@ -82,8 +82,8 @@ module cartback_layout() {
         }
         translate([-0.5,1.5,0])union()
         {
-            translate([1.5,42.5+guides_gap,5]) cube([2,5.5-guides_gap*2,3]);
-            translate([2,42.5+guides_gap,5]) cube([1.6,5.5-guides_gap*2,8]);
+            translate([1.5,41+guides_gap,5]) cube([2,5.5-guides_gap*2,3]);
+            #translate([2,41+guides_gap,5]) cube([1.6,5.5-guides_gap*2,8]);
         }
     }
 }
