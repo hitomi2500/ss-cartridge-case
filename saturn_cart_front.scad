@@ -32,7 +32,7 @@ module quarter_tore(r1, r2) {
     }
 }
 
-module cartback_layout() {
+module cart_front_layout() {
     translate([0,0,1]) cube ([1.6,cart_y-7,8.5]);
 	translate([8,cart_y-0.6,1]) cube ([cart_x/2-8,1.6,8.5]);
 	translate([2,25,2]) cube([5.5,1,5.5]);
@@ -51,7 +51,6 @@ module cartback_layout() {
     }
 	translate([2,12,2]) cube([6.5,1,6.5]);
 	translate([13.5,11.5,2]) cube([cart_x/2-13.5,1,5.5]);
-	translate([13.5,11.5,2]) cube([4.5,1,6.5]);
 	translate([11,0,2]) cube([1,2.5,7]);
 	translate([1,-1,1]) cube([10,1,8]);
 	translate([4.5,0,1]) cube([4,0.5,8.5]);
@@ -76,11 +75,11 @@ module cartback_layout() {
     //guides to connect top and bottom
     if (use_guides > 0)
     {
-        translate([15.5,cart_y-2.5,2]) cube([12,2,11.5]);
+        translate([15.5,cart_y-2.6,2]) cube([12,2,11.5]);
 	}
 }
 
-module cartback_layout_holes() {
+module cart_front_layout_holes() {
     translate([6.5,6.5,1])cylinder(r=1,h=15);
     translate([-1,-1,9]) cube ([2,cart_y-6,2]);
     translate([8,cart_y,9]) cube ([cart_x/2-8,1,1]);
@@ -115,55 +114,61 @@ module cartback_layout_holes() {
         quarter_tube(4,0,100);
     }
 }
-
-union()
-{
-	difference(){
-		union(){
-			translate([1,0,0]) oblong (cart_x-2,cart_y,2,7);
-            translate([37/2,24,1.5]) cube ([cart_x-37,cart_y-30,1.5]);
-            cartback_layout();
-			translate([cart_x,0,0])mirror()cartback_layout();
-            if (front_central_pillar)
-                translate([cart_x/2-7,cart_y/2,3])cylinder(r=2.5,h=5.5);
-            translate([51.5,11.5,2]) cube([4.5,1,6.5]);
-		}
-		union(){
-            if (remove_unprintable_concaves < 1)
-            {
-                translate([37/2,24,0]) cube ([cart_x-37,cart_y-33,1]);
+//cart_front() ;
+module cart_front() {
+    union()
+    {
+        difference(){
+            union(){
+                translate([1,0,0]) oblong (cart_x-2,cart_y,2,7);
+                translate([37/2,24,1.5]) cube ([cart_x-37,cart_y-30,1.5]);
+                cart_front_layout();
+                translate([cart_x,0,0])mirror([1,0,0])cart_front_layout();
+                if (front_central_pillar)
+                    translate([cart_x/2-7,cart_y/2,3])cylinder(r=2.5,h=5.5);
+                translate([50.5,11.5,2]) cube([4.5,1,6.5]);//pcb bottom middle peg
+                translate([13.5,11.5,2]) cube([3.5,1,6.5]); //pcb bottom left peg
+                translate([93.5,11.5,2]) cube([5.5,1,6.5]); //pcb bottom right peg
             }
-			if (remove_unprintable_concaves < 2)
-            {
-                translate([cart_x/2-5.5,6,0])linear_extrude(height = 0.5)polygon(points=[[0,9.5],[11,9.5],[5.5,0]]);
-            }
-            cartback_layout_holes();
-            translate([cart_x,0,0])mirror()cartback_layout_holes();
-            translate([cart_x/2-7,cart_y/2,3])cylinder(r=1.5,h=6);
-            if (cart_type == "Saturn USB Cart Rev 3")
-                translate([cart_x-9,56.5,2]) cube([10,12,10]); //usb hole
-            if (cart_type == "wasca v1.1")
-            {
-                translate([20,45,-5]) cube ([50,100,50]); //connectors cutout
-                translate([-10,62,2]) cube ([20,10,50]);  //usb hole     
-            }
-            if (cart_type == "wasca v1.4")
-            {
-                translate([20,65,-5]) cube ([30,100,50]); //sd cutout
-                translate([57,69.5,-5]) cube ([20,10,50]); //debug cutout
-                translate([103,50,-5]) cube ([10,50,50]); //esp32 cutout
-                translate([10,75.5,-5]) cylinder(r=2,h=10); //led cutout
-                translate([81,75.5,-5]) cylinder(r=2,h=10); //led2 cutout
-                translate([19,27,-5]) cube ([5,13,50]); //dfu cutout
-                translate([7,51.5,-5]) cube ([7,7,50]); //stm32 debug cutout
-                translate([-10,60.5,2]) cube ([20,10,50]);  //usb hole 
-                //translate([cart_x/2-28.5,70.5,7]) cube ([57,10,1.5]);  //pcb hole      
-                //translate([cart_x/2-50,70.5,7]) cube ([9,10,1.5]);  //pcb hole  
-                //translate([cart_x/2-55,70.5,3]) cube ([9,10,10]);  //pcb hole2  
-                translate([cart_x/2-12,cart_y/2-5,3]) cube ([10,10,10]);  //remove pillar                  
+            union(){
+                if (remove_unprintable_concaves < 1)
+                {
+                    translate([37/2,24,0]) cube ([cart_x-37,cart_y-33,1]);
+                }
+                if (remove_unprintable_concaves < 2)
+                {
+                    translate([cart_x/2-5.5,6,0])linear_extrude(height = 0.5)polygon(points=[[0,9.5],[11,9.5],[5.5,0]]);
+                }
+                cart_front_layout_holes();
+                translate([cart_x,0,0])mirror([1,0,0])cart_front_layout_holes();
+                translate([cart_x/2-7,cart_y/2,3])cylinder(r=1.5,h=6);
+                if (cart_type == "Saturn USB Cart Rev 3")
+                    translate([cart_x-9,56.5,2]) cube([10,12,10]); //usb hole
+                if (cart_type == "wasca v1.1")
+                {
+                    translate([20,45,-5]) cube ([50,100,50]); //connectors cutout
+                    translate([-10,62,2]) cube ([20,10,50]);  //usb hole     
+                }
+                if (cart_type == "wasca v1.4")
+                {
+                    translate([20,65,-5]) cube ([30,100,50]); //sd cutout
+                    translate([57,69.5,-5]) cube ([20,10,50]); //debug cutout
+                    translate([103,50,-5]) cube ([10,50,50]); //esp32 cutout
+                    translate([10,75.5,-5]) cylinder(r=2,h=10); //led cutout
+                    translate([81,75.5,-5]) cylinder(r=2,h=10); //led2 cutout
+                    translate([19,27,-5]) cube ([5,13,50]); //dfu cutout
+                    translate([7,51.5,-5]) cube ([7,7,50]); //stm32 debug cutout
+                    translate([-10,60.5,2]) cube ([20,10,50]);  //usb hole 
+                    translate([cart_x/2-12,cart_y/2-5,3]) cube ([10,10,10]);  //remove pillar                  
+                }
+                if (cart_type == "wasca v1.7")
+                {
+                    translate([27.3,65,-5]) cube ([30.2,100,50]); //sd cutout
+                    translate([101,51,-5]) cube ([5,28,50]); //esp32 cutout
+                    translate([66,73.5,-5]) cylinder(r=2,h=10); //led cutout
+                    translate([cart_x/2-12,cart_y/2-5,3]) cube ([10,10,10]);  //remove pillar                  
+                }
             }
         }
-	}
-
+    }
 }
-

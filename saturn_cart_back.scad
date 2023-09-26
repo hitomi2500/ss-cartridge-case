@@ -35,7 +35,7 @@ module quarter_tore(r1, r2) {
     }
 }
 
-module cartback_layout() {
+module cart_back_layout() {
     difference()
     {
         translate([0,-1,0]) oblong (12,57,5,1);
@@ -49,7 +49,7 @@ module cartback_layout() {
 	translate([1,51,5]) cube([6,1,2]);
 	translate([1,12,5]) cube([11,1,2]);
 	translate([3,12,5]) cube([6,1,3.5]);
-	translate([11,11.5,2]) cube([cart_x/2-11,1,5.5]);
+	translate([11,11.5,2]) cube([cart_x/2-11,1,6.3]);
 	translate([11,1,2]) cube([1,11,5.5]);
 	translate([11,0,2]) cube([1,2.5,6.5]);
 	translate([1,-1,3]) cube([10,1,5.5]);
@@ -75,6 +75,9 @@ module cartback_layout() {
         else if (cart_type == "wasca v1.4")
         {
         }
+        else if (cart_type == "wasca v1.7")
+        {
+        }
         else
         {
             translate([cart_x/2-14-guides_gap,cart_y-2.5,2]) cube([7,2,6]);
@@ -83,12 +86,12 @@ module cartback_layout() {
         translate([-0.5,1.5,0])union()
         {
             translate([1.5,41+guides_gap,5]) cube([2,5.5-guides_gap*2,3]);
-            #translate([2,41+guides_gap,5]) cube([1.6,5.5-guides_gap*2,8]);
+            translate([2.6,41+guides_gap,5]) cube([1.6,5.5-guides_gap*2,8]);
         }
     }
 }
 
-module cartback_layout_holes() {
+module cart_back_layout_holes() {
     if (remove_unprintable_concaves < 1)
     {
         translate([-1,-2,-1]) oblong (12,56,4,1);	
@@ -111,45 +114,49 @@ module cartback_layout_holes() {
     {
         translate([8,cart_y-1,8]) cube ([19,1,1]);
     }
-    if (cart_type == "wasca v1.1")
-    {
-        translate([-1,-2,-1]) oblong (12,56,4,1);
-    }
-    if (cart_type == "wasca v1.4")
-    {
-        translate([-10,62,5]) cube ([20,10,50]);  //usb hole 
-        translate([cart_x/2-1,cart_y/2-5,2]) cube ([10,10,10]);  //remove pillar                  
-    }
 }
 
-union()
-{
-	difference(){
-		union(){
-			translate([1,0,0]) oblong (cart_x-2,cart_y,2,7);
-            cartback_layout();
-			translate([cart_x,0,0])mirror()cartback_layout();
-            if (back_central_pillar)
-                translate([cart_x/2,cart_y/2,2])cylinder(r=2.5,h=5);
-		}
-		union(){
-			if (remove_unprintable_concaves < 1)
-            {
-                translate([(cart_x-backlabel_x)/2,cart_y/2-33,-1]) oblong (backlabel_x,backlabel_y,2,2.5);
-            }
-			cartback_layout_holes();
-            translate([cart_x,0,0])mirror()cartback_layout_holes();
-            translate([cart_x/2,cart_y/2,2])cylinder(r=1.5,h=6);
-            if (cart_type == "Saturn USB Cart Rev 3")
-                translate([-5,56.5,6.5]) cube([20,12,10]); //usb hole
-            if (cart_type == "wasca v1.1")
-            {
-                translate([cart_x/2+3,cart_y+5,8])rotate([90,0,0])cylinder(r=3,h=15);//led cutout
-                translate([64,77,2]) cube([29,5,10]);//sd card cutout
+//cart_back();
 
+module cart_back() {
+    union()
+    {
+        difference(){
+            union(){
+                translate([1,0,0]) oblong (cart_x-2,cart_y,2,7);
+                cart_back_layout();
+                translate([cart_x,0,0])mirror([1,0,0])cart_back_layout();
+                if (back_central_pillar)
+                    translate([cart_x/2,cart_y/2,2])cylinder(r=2.5,h=5);
             }
-		}
-	}
+            union(){
+                if (remove_unprintable_concaves < 1)
+                {
+                    translate([(cart_x-backlabel_x)/2,cart_y/2-33,-1]) oblong (backlabel_x,backlabel_y,2,2.5);
+                }
+                cart_back_layout_holes();
+                translate([cart_x,0,0])mirror([1,0,0])cart_back_layout_holes();
+                translate([cart_x/2,cart_y/2,2])cylinder(r=1.5,h=6);
+                if (cart_type == "Saturn USB Cart Rev 3")
+                    translate([-5,56.5,6.5]) cube([20,12,10]); //usb hole
+                if (cart_type == "wasca v1.1")
+                {
+                    translate([cart_x/2+3,cart_y+5,8])rotate([90,0,0])cylinder(r=3,h=15);//led cutout
+                    translate([64,77,2]) cube([29,5,10]);//sd card cutout
+                    translate([-1,-2,-1]) oblong (12,56,4,1);
+                }
+                if (cart_type == "wasca v1.4")
+                {
+                    translate([-10,62,5]) cube ([20,10,50]);  //usb hole 
+                    translate([cart_x/2-1,cart_y/2-5,2]) cube ([10,10,10]);  //remove pillar                  
+                }
+                if (cart_type == "wasca v1.7")
+                {
+                    translate([cart_x/2-5,cart_y/2-5,2]) cube ([10,10,10]);  //remove pillar                  
+                }
+            }
+        }
 
+    }
 }
 
