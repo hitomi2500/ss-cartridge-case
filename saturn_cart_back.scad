@@ -128,6 +128,10 @@ module cart_back() {
                 translate([cart_x,0,0])mirror([1,0,0])cart_back_layout();
                 if (back_central_pillar)
                     translate([cart_x/2,cart_y/2,2])cylinder(r=2.5,h=5);
+                if (cart_type == "wasca v1.8")
+                {
+                    translate([15,cart_y-15,2])cylinder(r=2.5,h=5); //extra pillar
+                }
             }
             union(){
                 if (remove_unprintable_concaves < 1)
@@ -150,9 +154,10 @@ module cart_back() {
                     translate([-10,62,5]) cube ([20,10,50]);  //usb hole 
                     translate([cart_x/2-1,cart_y/2-5,2]) cube ([10,10,10]);  //remove pillar                  
                 }
-                if (cart_type == "wasca v1.7")
+                if ( (cart_type == "wasca v1.7") || (cart_type == "wasca v1.8") )
                 {
-                    translate([cart_x/2-5,cart_y/2-5,2]) cube ([10,10,10]);  //remove pillar                  
+                    translate([cart_x/2-5,cart_y/2-5,2]) cube ([10,10,10]);  //remove pillar
+                    translate([57.3,77,10]) cube ([30.2,100,50]); //sd cutout
                 }
             }
         }

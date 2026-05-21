@@ -161,11 +161,11 @@ module cart_front() {
                     translate([-10,60.5,2]) cube ([20,10,50]);  //usb hole 
                     translate([cart_x/2-12,cart_y/2-5,3]) cube ([10,10,10]);  //remove pillar                  
                 }
-                if (cart_type == "wasca v1.7")
+                if ( (cart_type == "wasca v1.7") || (cart_type == "wasca v1.8") )
                 {
-                    translate([27.3,65,-5]) cube ([30.2,100,50]); //sd cutout
+                    translate([27.3,77,3]) cube ([30.2,100,50]); //sd cutout
                     translate([101,51,-5]) cube ([5,28,50]); //esp32 cutout
-                    translate([66,73.5,-5]) cylinder(r=2,h=10); //led cutout
+                    translate([66,73.5,-5]) cylinder(r=2.5,h=10); //led cutout
                     translate([cart_x/2-12,cart_y/2-5,3]) cube ([10,10,10]);  //remove pillar                  
                 }
             }
