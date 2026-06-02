@@ -56,8 +56,8 @@ difference()
     union()
     {
         translate([62,-50,10])rotate([0,180,0])cart_front();
-        translate([-50,-50,-7.5])cart_back();
-        translate([-70.8,109,2.5])rotate([180,0,0])pcb_1_8();
+        //translate([-70.8,109,2.5])rotate([180,0,0])pcb_1_8();
+        //translate([-50,-50,-7.5])cart_back();
     }
     //translate([-27,-80,-40])cube([200,200,100]);//cut for left lock
     //translate([15,-80,-40])cube([200,200,100]);//cut for left lock

@@ -1,4 +1,5 @@
 include <saturn_cart_configuration.scad>
+include <flower.scad>
 //PLEASE CHECK saturn_cart_configuration.scad BEFORE PRINTING !!!
 
 cart_x = 112; //this is not a parameter, added here just for reference
@@ -166,7 +167,9 @@ module cart_front() {
                     translate([27.3,77,3]) cube ([30.2,100,50]); //sd cutout
                     translate([101,51,-5]) cube ([5,28,50]); //esp32 cutout
                     translate([66,73.5,-5]) cylinder(r=2.5,h=10); //led cutout
-                    translate([cart_x/2-12,cart_y/2-5,3]) cube ([10,10,10]);  //remove pillar                  
+                    translate([cart_x/2-12,cart_y/2-5,3]) cube ([10,10,10]);  //remove pillar
+                    translate([40,73,0.5])rotate([0,180,0])linear_extrude(10)
+                       text("wasca",size=7,font="Corbel:style=Regular");
                 }
             }
         }

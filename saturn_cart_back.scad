@@ -75,7 +75,7 @@ module cart_back_layout() {
         else if (cart_type == "wasca v1.4")
         {
         }
-        else if (cart_type == "wasca v1.7")
+        else if ( (cart_type == "wasca v1.7") || (cart_type == "wasca v1.8") )
         {
         }
         else
@@ -102,7 +102,8 @@ module cart_back_layout_holes() {
         translate([28,cart_y-14,-1]) cube ([cart_x/2-28,1,2]);
         translate([36,cart_y-18,-1]) cube ([cart_x/2-36,1,2]);
         translate([42,cart_y-22,-1]) cube ([cart_x/2-42,1,2]);
-        translate([50,cart_y-26,-1]) cube ([cart_x/2-50,1,2]);
+        if ( (cart_type != "wasca v1.7") && (cart_type != "wasca v1.8") )
+            translate([50,cart_y-26,-1]) cube ([cart_x/2-50,1,2]);
         translate([6.5,6.5,-9])cylinder(r=3.5,h=13);
     }    
     translate([6.5,6.5,-8])cylinder(r=1.5,h=17);
@@ -158,6 +159,7 @@ module cart_back() {
                 {
                     translate([cart_x/2-5,cart_y/2-5,2]) cube ([10,10,10]);  //remove pillar
                     translate([57.3,77,10]) cube ([30.2,100,50]); //sd cutout
+                    translate([cart_x/2,45,-9.5])scale([0.2,0.2,1])flower();//flower
                 }
             }
         }
