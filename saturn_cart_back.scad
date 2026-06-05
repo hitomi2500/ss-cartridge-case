@@ -1,4 +1,5 @@
 include <saturn_cart_configuration.scad>
+include <flower.scad>
 //PLEASE CHECK THAN CONFIGURATION IN saturn_cart_configuration.scad
 //FITS YOUR CART BEFORE PRINTING
 
@@ -158,8 +159,8 @@ module cart_back() {
                 if ( (cart_type == "wasca v1.7") || (cart_type == "wasca v1.8") )
                 {
                     translate([cart_x/2-5,cart_y/2-5,2]) cube ([10,10,10]);  //remove pillar
-                    translate([57.3,77,10]) cube ([30.2,100,50]); //sd cutout
                     translate([cart_x/2,45,-9.5])scale([0.2,0.2,1])flower();//flower
+                    translate([cart_x/2+15,85,11])sphere(r=10);//micro sd cutout
                 }
             }
         }

@@ -1,5 +1,4 @@
 include <saturn_cart_configuration.scad>
-include <flower.scad>
 //PLEASE CHECK saturn_cart_configuration.scad BEFORE PRINTING !!!
 
 cart_x = 112; //this is not a parameter, added here just for reference
@@ -43,8 +42,10 @@ module cart_front_layout() {
     {
         if (cart_type == "Saturn USB Cart Rev 3")
             translate([6.5,40,2]) cube([1.5,7.5,9.5]);
+        else if (cart_type == "wasca v1.8")
+            translate([5.5,40,2]) cube([2,7.5,9.5]);
         else
-            translate([5.5,40,2]) cube([1,7.5,9.5]);        
+            translate([5.5,40,2]) cube([1,7.5,9.5]);
         translate([2,40,2]) cube([4.5,1,6.5]);
         translate([2,46.5,2]) cube([4.5,1,6.5]);
         translate([4,40,2]) cube([2.5,1,9.5]);
@@ -170,6 +171,10 @@ module cart_front() {
                     translate([cart_x/2-12,cart_y/2-5,3]) cube ([10,10,10]);  //remove pillar
                     translate([40,73,0.5])rotate([0,180,0])linear_extrude(10)
                        text("wasca",size=7,font="Corbel:style=Regular");
+                }
+                if (cart_type == "wasca v1.8")
+                {
+                    translate([2,60,2]) cube ([10,10,10]); //usb C cutout
                 }
             }
         }
