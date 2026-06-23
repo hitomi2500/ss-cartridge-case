@@ -78,6 +78,7 @@ module cart_back_layout() {
         }
         else if ( (cart_type == "wasca v1.7") || (cart_type == "wasca v1.8") )
         {
+            translate([cart_x/2-2.5,cart_y-2.5,2]) cube([7,2,6]);
         }
         else
         {
